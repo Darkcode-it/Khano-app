@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@font-face {
+  @font-face {
+      font-family: 'Lalezar';
+      font-weight: 300;
+      src: local(Lalezar), url(./fonts/Lalezar-Regular.ttf) format("truetype");
+  }}
+
+  * {
+      font-family: 'Lalezar';
+      font-weight: 300;
+  }
+  body{
+    background-color: rgb(18, 24, 38);
+  }

@@ -1,0 +1,33 @@
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-in;
+}
+
+/* Ensure mobile menu takes full width */
+@media (max-width: 767px) {
+  .flex-col {
+      width: 100%;
+  }
+}
+
+/* Fix desktop submenu positioning */
+@media (min-width: 768px) {
+  .relative {
+      position: relative;
+
+  }
+
+  .absolute {
+      margin-top: 0;
+  }
+}
