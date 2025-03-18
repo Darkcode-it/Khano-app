@@ -19,7 +19,7 @@ function Onediv() {
   const { offset, containerRef } = useCarousel(images.length);
 
   return (
-    <div className="w-full max-w-[1200px] mx-auto my-0 bg-[rgb(33,42,54)] rounded-[10px] border border-[#e1e1e1] shadow-[2px_2px_20px_rgba(0,0,0,0.1)] p-0 animate-[fadeIn_1s_ease-out]">
+    <div className="w-full max-w-[1200px] mx-auto my-0 bg-white rounded-[10px] border border-[#e1e1e1] shadow-[2px_2px_20px_rgba(0,0,0,0.1)] p-0 animate-[fadeIn_1s_ease-out]">
       <div className="w-full overflow-hidden">
         <div
           ref={containerRef}
@@ -31,7 +31,9 @@ function Onediv() {
               key={index}
               src={src}
               alt={`Wooden House ${index + 1}`}
-              className="w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] md:w-[200px] md:h-[200px] object-cover rounded-full border-4 border-[#e1e1e1] hover:scale-105 transition-transform duration-300 ease-in-out flex-shrink-0"
+              className="w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] md:w-[200px] md:h-[200px]
+               object-cover rounded-full border-2 p-1 mx-1 border-[red] hover:scale-105 transition-transform
+                duration-300 ease-in-out flex-shrink-0"
             />
           ))}
         </div>
