@@ -1,0 +1,124 @@
+{
+  "logoText": "خانوو",
+  "links": [
+    {
+      "title": "فروش خانه",
+      "url": "#"
+    },
+    {
+      "title": "درخواست پیشنهاد",
+      "url": "#"
+    },
+    {
+      "title": "قیمت‌گذاری",
+      "url": "#"
+    },
+    {
+      "title": "نظرات",
+      "url": "#"
+    },
+    {
+      "title": "داستان‌ها",
+      "url": "#"
+    },
+    {
+      "title": "خرید خانه",
+      "url": "#"
+    },
+    {
+      "title": "خرید",
+      "url": "#"
+    },
+    {
+      "title": "مالی",
+      "url": "#"
+    }
+  ],
+  "secondColumnLinks": [
+    {
+      "title": "خرید، اجاره و فروش",
+      "url": "#"
+    },
+    {
+      "title": "خرید و فروش املاک",
+      "url": "#"
+    },
+    {
+      "title": "اجاره خانه",
+      "url": "#"
+    },
+    {
+      "title": "معامله سازنده",
+      "url": "#"
+    },
+    {
+      "title": "قوانین و حریم خصوصی",
+      "url": "#"
+    },
+    {
+      "title": "اعتماد و امنیت",
+      "url": "#"
+    },
+    {
+      "title": "شرایط استفاده",
+      "url": "#"
+    },
+    {
+      "title": "سیاست حریم خصوصی",
+      "url": "#"
+    }
+  ],
+  "thirdColumnLinks": [
+    {
+      "title": "درباره ما",
+      "url": "#"
+    },
+    {
+      "title": "شرکت",
+      "url": "#"
+    },
+    {
+      "title": "تماس با ما",
+      "url": "#"
+    },
+    {
+      "title": "سرمایه‌گذاران",
+      "url": "#"
+    },
+    {
+      "title": "منابع",
+      "url": "#"
+    },
+    {
+      "title": "وبلاگ",
+      "url": "#"
+    },
+    {
+      "title": "راهنماها",
+      "url": "#"
+    },
+    {
+      "title": "سوالات متداول",
+      "url": "#"
+    },
+    {
+      "title": "مرکز کمک",
+      "url": "#"
+    }
+  ],
+  "footerText": "©۲۰۲۱ استاتری. تمام حقوق محفوظ است.",
+  "socialIcons": [
+    {
+      "icon": "CiFacebook",
+      "url": "https://www.facebook.com/DarkCodeit"
+    },
+    {
+      "icon": "FaGithub",
+      "url": "https://github.com/Darkcode-it"
+    },
+    {
+      "icon": "FaTelegram",
+      "url": "https://t.me/darkcodeit"
+    }
+  ]
+}

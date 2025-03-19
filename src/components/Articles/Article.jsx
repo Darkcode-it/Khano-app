@@ -8,7 +8,7 @@ import useArticles from './Article.js'; // Importing the custom hook
 export default function Articles() {
     const {articles} = useArticles();
 
-    return (<div className=" container flex justify-center mt-[50px] md:mt-0 p-10">
+    return (<div className=" flex justify-center mt-[50px] md:mt-0 p-10">
         <div className="w-full grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {articles.map((article) => (<div
                 key={article.id}
