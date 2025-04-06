@@ -2,7 +2,7 @@
   {
     "id": 1,
     "image": "./img/h5.jpg",
-    "price": "$2,095/ماه",
+    "price": "$2,333,095/ماه",
     "title": "Cove Red",
     "address": "خیابان Curlew 243، Palm Harbor، تگزاس",
     "beds": 4,
@@ -12,7 +12,7 @@
   {
     "id": 2,
     "image": "./img/h1.jpg",
-    "price": "$2,095/ماه",
+    "price": "$20,000,095/ماه",
     "title": "Cove Red",
     "address": "خیابان Curlew 243، Palm Harbor، تگزاس",
     "beds": 4,
@@ -22,7 +22,7 @@
   {
     "id": 3,
     "image": "./img/h2.jpg",
-    "price": "$2,095/ماه",
+    "price": "$21,580,095/ماه",
     "title": "Cove Red",
     "address": "خیابان Curlew 243، Palm Harbor، تگزاس",
     "beds": 4,
@@ -42,7 +42,7 @@
   {
     "id": 5,
     "image": "./img/h4.jpg",
-    "price": "$2,095/ماه",
+    "price": "$200,00,095/ماه",
     "title": "Cove Red",
     "address": "خیابان Curlew 243، Palm Harbor، تگزاس",
     "beds": 4,
@@ -52,7 +52,7 @@
   {
     "id": 6,
     "image": "./img/h5.jpg",
-    "price": "$2,095/ماه",
+    "price": "$150,25,524,095/ماه",
     "title": "Cove Red",
     "address": "خیابان Curlew 243، Palm Harbor، تگزاس",
     "beds": 4,
@@ -62,7 +62,7 @@
   {
     "id": 7,
     "image": "./img/h2.jpg",
-    "price": "$2,095/ماه",
+    "price": "$200,000,095/ماه",
     "title": "Cove Red",
     "address": "خیابان Curlew 243، Palm Harbor، تگزاس",
     "beds": 4,

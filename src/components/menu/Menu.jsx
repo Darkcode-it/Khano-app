@@ -1,128 +1,188 @@
 // Menu.jsx
-import React, {useState} from 'react';
-import {useMenuLogic} from './menu';
-import menu from "./Menu.json"
+import React, { useState, useEffect, useRef } from 'react';
+import { XMarkIcon, Bars3Icon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import menuData from './Menu.json';
 
+const Menu = ({ onNavigate }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const menuRef = useRef(null);
 
-const Menu = () => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMobileMenuOpen(false);
+        setActiveMenu(null);
+      }
     };
 
-    return (<div className=" flex justify-between w-full bg-gray-800 text-white">
-        <div className="container mx-auto px-4 py-1">
-            <div className="flex items-center justify-between md:justify-start">
-                <div className="text-xl font-bold ">خانوو</div>
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
-                {/* Hamburger Button for Mobile */}
-                <button
-                    className="md:hidden p-2 focus:outline-none order-2 ml-4"
-                    onClick={toggleMobileMenu}>
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                              d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}/>
-                    </svg>
-                </button>
-            </div>
+  const toggleSubMenu = (title) => {
+    setActiveMenu(activeMenu === title ? null : title);
+  };
 
-            {/* Menu Items */}
-            <div
-                className={`md:flex gap-10 justify-center ${isMobileMenuOpen ? 'flex' : 'hidden'} flex-col md:flex-row mt-4 md:mt-0`}>
-                <MenuItem
-                    title="ساختمان"
-                    items={[{name: 'تکمه', link: '/takmeh'},
-                        {name: 'شناژ ', link: '/shenas'},
-                        {name: 'نیمه شناژ', link: '/nime-shenazh'
-                    }, {name: 'شناس قائم', link: '/shenas-ghaem'},
-                        {name: 'آهن', link: '/ahan'}
-                    ]}
-                />
-                <MenuItem
-                    title="آپارتمان"
-                    items={[{name: 'اجاره', link: '/rent'},
-                        {name: 'فروشی', link: '/sale'}
-                    ]}
-                />
-                <MenuItem
-                    title="زمین مسکونی"
-                    items={[{name: 'محدوده', link: '/limited'},
-                        {name: 'غیر محدوده', link: '/unlimited'}]}
-                />
-                <MenuItem
-                    title="کشاورزی"
-                    items={[{name: 'دیمه', link: '/dimeh'},
-                        {name: 'بارانی', link: '/barani'}
-                    ]}
-                />
+  // Handle login navigation
+  const handleLoginClick = (e) => {
+    e.preventDefault();
+    onNavigate && onNavigate('login');
+    setIsMobileMenuOpen(false);
+  };
 
-                {/* Desktop Login/Register Buttons */}
-                <div className="hidden md:flex items-center gap-8 order-3 pr-90">
-                    <a href="/login"
-                       className="text-gray-900 bg-white border border-gray-300 focus:outline-none
-                        hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5
-                        dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700
-                         dark:hover:border-gray-600 dark:focus:ring-gray-700">ورود</a>
-                    <a href="/register"
-                       className="py-2.5 px-5 text-sm focus:outline-none bg-white rounded-lg
-                        border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10
-                         focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800
-                          dark:text-gray-400 dark:border-gray-600 dark:hover:text-white
-                           dark:hover:bg-gray-700">ثبت نام</a>
-                </div>
+  // Handle register navigation
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
+    onNavigate && onNavigate('register');
+    setIsMobileMenuOpen(false);
+  };
 
+  // Handle home navigation
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    onNavigate && onNavigate('home');
+    setIsMobileMenuOpen(false);
+  };
 
-                {/* Mobile Login/Register Buttons */}
-                {isMobileMenuOpen && (<div className="md:hidden flex flex-col gap-2 mt-4">
-                    <a href="/login"
-                       className="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded text-center transition-colors">ورود</a>
-                    <a href="/register"
-                       className="px-4 py-2 bg-green-600 hover:bg-green-300 rounded text-center transition-colors">ثبت
-                        نام</a>
-                </div>)}
-            </div>
-
-        </div>
-    </div>);
-};
-
-const MenuItem = ({title, items}) => {
-    const {isOpen, handleMouseEnter, handleMouseLeave, toggleOpen} = useMenuLogic();
-
-    return (<div
-        className="relative"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+  return (
+    <nav 
+      ref={menuRef}
+      className="bg-gray-800 text-white shadow-lg relative z-50"
+      aria-label="Main navigation"
     >
-        <button
-            className="w-full text-right md:text-center hover:text-gray-300 transition-colors p-2 focus:outline-none"
-            onClick={toggleOpen}
-        >
-            {title}
-        </button>
-        {/* Mobile submenu */}
-        {isOpen && (<div className="md:hidden">
-            {items.map((item, index) => (<a
-                key={index}
-                href={item.link}
-                className="block px-4 py-2 text-gray-300 hover:text-white transition-colors text-right"
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          
+          {/* Logo Section */}
+          <div className="flex-shrink-0">
+            <span onClick={handleHomeClick} className="text-xl font-bold cursor-pointer">خانوو</span>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-6">
+            {menuData.map((section) => (
+              <div 
+                key={section.title}
+                className="relative"
+                onMouseEnter={() => setActiveMenu(section.title)}
+                onMouseLeave={() => setActiveMenu(null)}
+              >
+                <button
+                  aria-haspopup="true"
+                  aria-expanded={activeMenu === section.title}
+                  className="flex items-center px-3 py-2 hover:text-blue-300 transition-colors"
+                >
+                  {section.title}
+                  <ChevronDownIcon className="w-4 h-4 mr-1" />
+                </button>
+
+                {activeMenu === section.title && (
+                  <div 
+                    className="absolute right-0 mt-0 w-48 bg-white text-gray-800 shadow-lg rounded-md py-1"
+                  >
+                    {section.items.map((item) => (
+                      <a
+                        key={item.link}
+                        href={item.link}
+                        className="block px-4 py-2 hover:bg-gray-100"
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Auth Buttons - Desktop */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="#"
+              onClick={handleLoginClick}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
             >
-                {item.name}
-            </a>))}
-        </div>)}
-        {/* Desktop submenu */}
-        {isOpen && (<div
-            className="hidden md:block absolute right-0 top-full w-40 bg-white text-gray-800 shadow-lg rounded-lg overflow-hidden animate-fadeIn z-10">
-            {items.map((item, index) => (<a
-                key={index}
-                href={item.link}
-                className="block px-4 py-2 hover:bg-gray-100 transition-colors"
+              ورود
+            </a>
+            <a
+              href="#"
+              onClick={handleRegisterClick}
+              className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-md transition-colors"
             >
-                {item.name}
-            </a>))}
-        </div>)}
-    </div>);
+              ثبت نام
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 focus:outline-none"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <XMarkIcon className="h-6 w-6" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-gray-700">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            {menuData.map((section) => (
+              <div key={section.title}>
+                <button
+                  onClick={() => toggleSubMenu(section.title)}
+                  className="w-full flex justify-between items-center px-3 py-2 hover:bg-gray-600 rounded-md"
+                >
+                  {section.title}
+                  <ChevronDownIcon className={`w-4 h-4 transform ${
+                    activeMenu === section.title ? 'rotate-180' : ''
+                  }`} />
+                </button>
+
+                {activeMenu === section.title && (
+                  <div className="pl-4">
+                    {section.items.map((item) => (
+                      <a
+                        key={item.link}
+                        href={item.link}
+                        className="block px-3 py-2 hover:bg-gray-600 rounded-md"
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+
+            <div className="pt-2 border-t border-gray-600">
+              <a
+                href="#"
+                onClick={handleLoginClick}
+                className="block w-full text-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md mb-2"
+              >
+                ورود
+              </a>
+              <a
+                href="#"
+                onClick={handleRegisterClick}
+                className="block w-full text-center px-4 py-2 bg-green-600 hover:bg-green-700 rounded-md"
+              >
+                ثبت نام
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
 };
 
 export default Menu;

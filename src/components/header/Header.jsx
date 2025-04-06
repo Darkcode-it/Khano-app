@@ -1,59 +1,94 @@
-
 // Header.jsx
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import data from "./Header.json";
+import headerData from "./Header.json";
 
 const Header = () => {
+  const { 
+    TitleHeader, 
+    SubTitleHeader, 
+    company, 
+    visit 
+  } = headerData;
+
+  const [activeTab, setActiveTab] = useState("اجاره");
+  const [stats] = useState([
+    { id: 1, value: "8k", label: company },
+    { id: 2, value: "10k+", label: visit }
+  ]);
+
+  const tabs = [
+    { id: "rent", label: "اجاره" },
+    { id: "buy", label: "خرید" },
+    { id: "sell", label: "فروش" }
+  ];
+
   return (
-    <div
-      id="header-container"
-      className="w-full h-auto  bg-[url('./public/img/map3.jpg')] bg-no-repeat bg-cover backdrop-blur-[200px]">
-      <h1 className="text-[40px] w-[420px] pr-10  md:text-[40px] md:w-full md:text-center md:pr-0  md:leading-[50px] pt-10 md:font-[350]">
-        {data.TitleHeader}</h1>
-      <p
-        id="header-p"
-        className="font-normal text-[20px] pr-10 w-[300px] mt-8 md:w-full md:text-center md:pr-0 md:my-5
-         md:leading-[30px] md:font-[350]">
-        {data.SubTitleHeader}
-      </p>
-      <span
-        className="numbers-con flex gap-[80px] px-[60px] md:justify-center md:gap-[100px] md:px-0 lg:gap-[10px]"
-        id="numbers-con-desk">
-        <div className="img-num-container flex gap-6">
-          <div>
-            <p className="m- p-0 flex text-[32px] text-[#7065f0]">8k</p>
-            <p className="text-[#000] text-[16px] font-normal">{data.company}</p>
+    <header className="w-full relative min-h-[600px] flex items-center justify-center bg-gray-900 overflow-hidden">
+      {/* Background Image with Gradient Overlay */}
+      <div 
+        className="absolute inset-0 bg-[url('/img/map3.jpg')] bg-cover bg-center"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-indigo-900/80 " />
+
+      {/* Content Container */}
+      <div className="relative z-10 max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center space-y-10">
+          {/* Headings Section */}
+          <div className="max-w-3xl mx-auto space-y-8">
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight animate-fadeInUp">
+              {TitleHeader}
+            </h1>
+            <p className="text-xl md:text-2xl text-indigo-100 font-light leading-relaxed">
+              {SubTitleHeader}
+            </p>
+          </div>
+
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 gap-8 max-w-xs mx-auto md:max-w-2xl md:grid-cols-2 lg:grid-cols-2">
+            {stats.map((stat) => (
+              <div 
+                key={stat.id}
+                className="p-6 bg-white/10 backdrop-blur-lg rounded-xl border border-white/10 transition-all hover:bg-white/20"
+              >
+                <div className="text-4xl font-bold text-indigo-300 mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-base font-medium text-indigo-100">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Navigation Tabs */}
+          <div className="flex justify-center">
+            <div className="inline-flex bg-white/10 backdrop-blur-lg rounded-full border border-white/20 p-1.5">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 ${
+                    activeTab === tab.id 
+                      ? "bg-indigo-500 text-white shadow-lg"
+                      : "text-indigo-100 hover:bg-white/5"
+                  }`}
+                  aria-current={activeTab === tab.id ? "page" : undefined}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="img-num-container flex gap-6">
-          <div>
-            <p className="m-0 p-0 flex text-[32px] text-[#7065f0]">10k+</p>
-            <p className="text-[#000] text-[16px] font-normal">{data.visit}</p>
-          </div>
-        </div>
-      </span>
-      <div
-        id="rent-list"
-        className="mr-[9px] m-10 flex w-1/4 bg-white rounded-tl-lg rounded-tr-lg shadow-[0_4px_6px_rgba(0,0,0,0.1)]
-         hover:shadow-[0_8px_12px_rgba(0,0,0,0.2)] transition-shadow duration-300 ease-in-out
-          hover:-translate-y-[2px] md:mr-0 md:mt-12 md:min-w-[20%] md:rounded-[20px] md:flex-wrap md:justify-center">
-        <p className="px-[32px] py-[10px] font-bold text-[18px] text-[#7065f0] border-b-[3px]
-         border-[#7065f0] cursor-pointer hover:text-[#7065f0] hover:-translate-y-[3px]
-          transition-all duration-300 ease-in-out md:w-full md:text-center md:m-0">اجاره</p>
-        <p className="px-[30px] py-[10px] font-normal text-[18px] border-b border-[#e0def7] cursor-pointer 
-        hover:text-[#7065f0] hover:-translate-y-[3px] transition-all duration-300 ease-in-out md:w-full 
-        md:text-center md:m-0">خرید</p>
-        <p className="px-[30px] py-[10px] font-normal text-[18px] border-b border-[#e0def7] 
-        cursor-pointer hover:text-[#7065f0] hover:-translate-y-[3px] transition-all duration-300 
-        ease-in-out md:w-full md:text-center md:m-0">فروش</p>
       </div>
-    </div>
+    </header>
   );
 };
 
 Header.propTypes = {
-  data: PropTypes.shape({
+  headerData: PropTypes.shape({
     TitleHeader: PropTypes.string.isRequired,
     SubTitleHeader: PropTypes.string.isRequired,
     company: PropTypes.string.isRequired,
