@@ -1,6 +1,6 @@
 // Menu.jsx
 import React, { useState, useEffect, useRef } from 'react';
-import { XMarkIcon, Bars3Icon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import menuData from './Menu.json';
 
 const Menu = ({ onNavigate }) => {
