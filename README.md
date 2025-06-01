@@ -97,7 +97,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 
-View live version: [https://github.com/darkcode-it/Khano-app](https://github.com/darkcode-it/Khano-app)
+View live version: [https://darkcode-it.github.io/Khano-app/]
 
 ---
 
@@ -201,4 +201,4 @@ npm run preview
 
 
 
-مشاهده نسخه زنده [https://github.com/darkcode-it/Khano-app](https://github.com/darkcode-it/Khano-app)
+مشاهده نسخه زنده [https://darkcode-it.github.io/Khano-app/]
