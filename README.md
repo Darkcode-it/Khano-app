@@ -96,9 +96,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter)
 
-Project Link: [https://github.com/darkcode-it/Khano-app](https://github.com/darkcode-it/Khano-app)
+View live version: [https://github.com/darkcode-it/Khano-app](https://github.com/darkcode-it/Khano-app)
 
 ---
 
@@ -200,6 +199,6 @@ npm run preview
 
 ## تماس
 
-نام شما - [@your_twitter](https://twitter.com/your_twitter)
 
-لینک پروژه: [https://github.com/darkcode-it/Khano-app](https://github.com/darkcode-it/Khano-app)
+
+مشاهده نسخه زنده [https://github.com/darkcode-it/Khano-app](https://github.com/darkcode-it/Khano-app)
